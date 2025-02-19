@@ -3,21 +3,23 @@
     "framework": null,
     "builds": [
         {
-          "src": "Dockerfile",
-          "use": "@vercel/docker"
+            "src": "api/index.php",
+            "use": "@vercel/php",
+            "config": {
+                "installCommand": "apt-get update && apt-get install -y libssl-dev"
+            }
         }
-      ],
+    ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "api/index.php"
+            "dest": "/api/index.php"
         }
     ],
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "https://middleware-calashock-bc-vv-ebay.vercel.app",
-        "APP_KEY": "base64:qiylSosPMh9nyel8o8nlIeEBeLxVR7NINgJW1c0B0fU=",
+        "APP_URL": "https://example-lbs31e74j-bc-to-ebay.vercel.app",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
